@@ -21,7 +21,7 @@ func Build() {
     if err != nil {
         log.Fatal(err)
     }
-	fmt.Printf("Log: %s\n", out)
+	fmt.Printf("Log: %s\n", err)
 
 	cmd = exec.Command("cp", "--recursive", "submodules/cirrus-deployer/deployer", "build/zips/.")
 	cmd.Stdout = os.Stdout
@@ -30,7 +30,7 @@ func Build() {
     if err != nil {
         log.Fatal(err)
     }
-	fmt.Printf("Log: %s\n", out)
+	fmt.Printf("Log: %s\n", err)
 
 	cmd = exec.Command("cp", "--recursive", "submodules/cirrus-deployer/tools", "build/zips/.")
 	cmd.Stdout = os.Stdout
@@ -39,7 +39,7 @@ func Build() {
     if err != nil {
         log.Fatal(err)
     }
-	fmt.Printf("Log: %s\n", out)
+	fmt.Printf("Log: %s\n", err)
 
 	cmd = exec.Command("cp", "--recursive", "run-manifest.json", "build/zips/.")
 	cmd.Stdout = os.Stdout
@@ -48,7 +48,7 @@ func Build() {
     if err != nil {
         log.Fatal(err)
     }
-	fmt.Printf("Log: %s\n", out)
+	fmt.Printf("Log: %s\n", err)
 
     // Remove unneeded folders & files from the deployer
 	os.RemoveAll("build/zips/tools/examples")
@@ -71,7 +71,7 @@ func Build() {
     if err != nil {
         log.Fatal(err)
     }
-	fmt.Printf("Log: %s\n", out)
+	fmt.Printf("Log: %s\n", err)
 
     // Create The build/zips/libs path
 	os.MkdirAll(filepath.Join("./build/zips", "cirrus-mrm-app"), os.ModePerm)
@@ -83,7 +83,7 @@ func Build() {
     if err != nil {
         log.Fatal(err)
     }
-	fmt.Printf("Log: %s\n", out)
+	fmt.Printf("Log: %s\n", err)
 
 	cmd = exec.Command("unzip", "build/temp.zip", "-d", "build/zips/cirrus-mrm-app")
 	cmd.Stdout = os.Stdout
@@ -92,7 +92,7 @@ func Build() {
     if err != nil {
         log.Fatal(err)
     }
-	fmt.Printf("Log: %s\n", out)
+	fmt.Printf("Log: %s\n", err)
 
 	cmd = exec.Command("zip", "-r", "CirrusMRM.zip", "*")
 	cmd.Dir = "build/zips"
@@ -102,7 +102,7 @@ func Build() {
     if err != nil {
         log.Fatal(err)
     }
-	fmt.Printf("Log: %s\n", out)
+	fmt.Printf("Log: %s\n", err)
 
     // Create The build/zips/libs path
 	os.MkdirAll(filepath.Join(".", "ui"), os.ModePerm)
@@ -115,7 +115,7 @@ func Build() {
     if err != nil {
         log.Fatal(err)
     }
-	fmt.Printf("Log: %s\n", out)
+	fmt.Printf("Log: %s\n", err)
 
 	cmd = exec.Command("cp", "--recursive", "build/zips/CirrusMRM.zip", "ui/build/app-ui.zip")
 	cmd.Stdout = os.Stdout
@@ -124,5 +124,5 @@ func Build() {
     if err != nil {
         log.Fatal(err)
     }
-	fmt.Printf("Log: %s\n", out)
+	fmt.Printf("Log: %s\n", err)
 }
